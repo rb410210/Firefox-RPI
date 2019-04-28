@@ -1,0 +1,7 @@
+{
+  "name": "firefox_rpi_native",
+  "description": "calls kd shell script",
+  "path": "D:\\GitHub\\rb410210\\Firefox-RPI\\launcher.bat",
+  "type": "stdio",
+  "allowed_extensions": ["firefox_rpi@rb410210"]
+}

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Download to Raspberry Pi",
+  "version": "1.0",
+  "description": "Downloads files to Raspberry Pi",
+  "icons": {
+    "48": "icons/rpi.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "firefox_rpi@rb410210",
+      "strict_min_version": "50.0"
+    }
+  },
+  "permissions": ["contextMenus", "nativeMessaging", "activeTab"],
+  "background": {
+    "scripts": ["rpi.js"]
+  }
+}
