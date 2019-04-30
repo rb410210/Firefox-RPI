@@ -35,7 +35,7 @@ try:
         receivedMessage = getMessage()
         parsed = urlparse.urlparse(receivedMessage)
         vevoUrl = urlparse.parse_qs(parsed.query)['url'][0]
-        subprocess.check_call(['bash', '-c', 'tsp ssh osmc@rpi "/usr/sbin/videoDownload \'' + vevoUrl + '\'" >>/tmp/vevo-output.txt'], shell = False)
+        subprocess.check_call(['bash', '-c', 'ssh osmc@rpi tsp "/usr/sbin/videoDownload \'' + vevoUrl + '\'" >>/tmp/vevo-output.txt'], shell = False)
         sendMessage(encodeMessage(receivedMessage))
 except AttributeError:
     # Python 2.x version (if sys.stdin.buffer is not defined)
