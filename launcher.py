@@ -35,10 +35,12 @@ try:
         receivedMessage = getMessage()
         if receivedMessage.startswith('https://www.youtube.com/'):
             subprocess.check_call(['bash', '-c', 'ssh osmc@rpi \'tsp youtube-dl -o "/media/Elements/Youtube/%(title)s.%(ext)s" -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" "' + receivedMessage + '"\''], shell = False)
-        else:
+        elif receivedMessage.startswith('https://www.google.com/'):
             parsed = urlparse.urlparse(receivedMessage)
             vevoUrl = urlparse.parse_qs(parsed.query)['url'][0]
             subprocess.check_call(['bash', '-c', 'ssh osmc@rpi tsp "/usr/sbin/videoDownload \'' + vevoUrl + '\'" >>/tmp/vevo-output.txt'], shell = False)
+        else:
+            subprocess.check_call(['bash', '-c', 'ssh osmc@rpi \'tsp youtube-dl -o "/media/Elements/other/%(title)s.%(ext)s" "' + receivedMessage + '"\''], shell = False)
         sendMessage(encodeMessage(receivedMessage))
 except AttributeError:
     # Python 2.x version (if sys.stdin.buffer is not defined)
